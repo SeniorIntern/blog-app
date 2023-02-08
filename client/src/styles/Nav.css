@@ -1,0 +1,14 @@
+.Nav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-blue);
+    padding: 1em;
+    border: 1px solid rgb(49, 47, 47);
+    border-radius: 1em;
+}
+
+.nav__items {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,5 @@
+.Main {
+    background-color: var(--background-blue);
+    border: 1px solid rgb(49, 47, 47);
+        border-radius: 1em;
+}
