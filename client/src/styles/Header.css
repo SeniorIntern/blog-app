@@ -4,4 +4,39 @@
     justify-content: space-between;
     align-items: center;
     height: 4em;
+    padding: 1em;
+}
+
+.header__left,
+.header__center,
+.header__right {
+    display: flex;
+    height: 2em;
+    align-items: center;
+}
+
+.header__center {
+    width: 100%;
+}
+
+.header__center>input {
+    width: 100%;
+    padding: 0.4em;
+    border: 0.5px solid grey;
+    border-radius: 2em;
+}
+
+input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1.2px solid #545557;
+    outline: none;
+}
+
+#id:focus {
+    border: none;
+    transition: none;
+    transform: none;
 }

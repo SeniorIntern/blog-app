@@ -8,7 +8,7 @@ export default function App() {
     return (
         <div className='App'>
             <Header />
-            <div className='app__contents'>
+            <div className='app__body'>
                 <Nav />
                 <Main />
                 <Aside />
