@@ -11,15 +11,24 @@ const PostModel = mongoose.model(
       minlength: 5,
       maxlegth: 52,
     },
-    // todo- embedd user, categories
+    // todo- embedd user schema, categories
     description: {
       type: String,
       required: true,
       unique: true,
       minlength: 20,
-      maxlegth: 500,
+      maxlegth: 800,
+    },
+    datePosted: {
+      type: Date,
+      default: Date.now,
+      required: true,
+    },
+    likeCount: {
+      type: Number,
+      default: 0,
     },
   })
 );
 
-module.exports = PostModel;
+exports.PostModel = PostModel;
