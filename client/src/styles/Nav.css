@@ -1,0 +1,12 @@
+.nav {
+  background-color: var(--background-blue);
+  padding: 1em;
+  width: 100%;
+  border-radius: 1.2em;
+}
+
+li {
+  list-style: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

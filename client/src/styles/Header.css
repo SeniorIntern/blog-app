@@ -41,10 +41,12 @@ input[type='text']:focus {
 
 .right {
 }
-.write {
+
+span {
   background-color: var(--color-blue);
   border: none;
-  font-size: 1rem;
+  border-radius: 1rem;
+  font-size: 1.2rem;
   color: white;
-  padding: 0.2em;
+  padding: 0.2em 1em;
 }

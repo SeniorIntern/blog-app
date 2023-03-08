@@ -4,6 +4,7 @@ import "../styles/Header.css"
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 export default function Header() {
     return(
         <header className="header">
