@@ -1,4 +1,6 @@
 import '../styles/Main.css';
+import dummyImg from '../assets/img/programming.avif';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 export default function Main() {
   return (
@@ -21,11 +23,15 @@ export default function Main() {
             </p>
           </div>
           <div className="article__image">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-            minima illum adipisci, tenetur perferendis sed repellat nesciunt.
+            <img src={dummyImg} alt="programming" />
           </div>
         </div>
-        <div className="article__informations"></div>
+        <div className="article__informations">
+          <h5>JavaScript</h5>
+          <p className="space"></p>
+          <FavoriteBorderOutlinedIcon />
+          <p className="likes">24</p>
+        </div>
       </article>
     </main>
   );

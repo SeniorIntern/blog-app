@@ -1,16 +1,34 @@
 import '../styles/Nav.css';
-
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
+import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 export default function Nav() {
   return (
     <nav className="nav">
       <ul>
-        <li>My Feed</li>
-        <li>Explore</li>
-        <li>Bookmarks</li>
-        <li></li>
+        <li>
+          <ArticleOutlinedIcon />
+          My Feed
+        </li>
+        <li>
+          <ExploreOutlinedIcon />
+          Explore
+        </li>
+        <li>
+          <ClassOutlinedIcon />
+          Bookmarks
+        </li>
+        <li>
+          <EmojiEventsOutlinedIcon />
+          Events
+        </li>
       </ul>
       <br />
-      <h1>Trending Tags</h1>
+      <h1>
+        Trending Tags <TrendingUpOutlinedIcon />
+      </h1>
       <br />
       <ul>
         <li>JavaScript</li>
