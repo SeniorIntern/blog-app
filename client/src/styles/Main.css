@@ -1,36 +1,19 @@
 .main {
   background-color: var(--background-blue);
-  padding: 1.2em;
-  border-radius: 1em;
+  border-radius: 12em;
 }
 
-.article__content {
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 24px;
-  grid-row-gap: 0px;
-}
-
-.article__content {
-  margin: 1.2em 0;
-}
-
-.article__informations {
+.feed__options {
+  border-bottom: 1px solid gray;
+  padding: 1em;
   display: flex;
   justify-content: space-between;
 }
 
-.information__tags {
+.sort__options {
   display: flex;
-  justify-content: space-between;
-  margin: 0;
 }
 
 .space {
   width: 100%;
-}
-
-.likes {
-  align-items: flex-end;
 }

@@ -3,6 +3,9 @@ import '../styles/Aside.css';
 export default function Aside() {
   return (
     <aside className="aside">
+      <h2>
+        <u>Howdy Nikhil</u>
+      </h2>
       <nav className="nav">
         <ul>
           <li>My Feed</li>

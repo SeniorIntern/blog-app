@@ -1,37 +1,44 @@
+import Article from './Article';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import ViewAgendaOutlinedIcon from '@mui/icons-material/ViewAgendaOutlined';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
+import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import '../styles/Main.css';
-import dummyImg from '../assets/img/programming.avif';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 export default function Main() {
   return (
-    <main className="main">
-      <article className="article">
-        <div className="article__author">
-          <div className="author__name">
-            <p>Nikhil Thapa</p>
-            <p>March 7, 2023</p>
-          </div>
+    <main className="main" style={{ borderRadius: '1em' }}>
+      <div className="feed__options">
+        <div className="sort__options">
+          <p>
+            <StarBorderOutlinedIcon />
+            Personalized
+          </p>
+          <p>
+            <ScheduleOutlinedIcon />
+            Recent
+          </p>
+          <p>
+            <AutoFixHighOutlinedIcon />
+            Features
+          </p>
         </div>
-        <div className="article__content">
-          <div className="content_description">
-            <h2>JavaScritp is an awesome language.</h2>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit,
-              eaque tempore corrupti sapiente earum totam quasi obcaecati, nisi
-              eligendi ut placeat vitae quis laboriosam unde perferendis
-              praesentium a inventore dolorem?
-            </p>
-          </div>
-          <div className="article__image">
-            <img src={dummyImg} alt="programming" />
-          </div>
+        <p className="space"></p>
+        <div className="view__options">
+          <p>
+            <FilterAltOutlinedIcon />
+          </p>
+          <p>
+            <ViewAgendaOutlinedIcon />
+            View
+          </p>
         </div>
-        <div className="article__informations">
-          <h5>JavaScript</h5>
-          <p className="space"></p>
-          <FavoriteBorderOutlinedIcon />
-          <p className="likes">24</p>
-        </div>
+      </div>
+      <article>
+        <Article />
+        <Article />
+        <Article />
       </article>
     </main>
   );
