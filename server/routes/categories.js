@@ -1,41 +1,60 @@
-const routes = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const { CategoryModel } = require('../models/Category');
 
-routes.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    res.status(200).send();
+    const categories = await CategoryModel.find();
+    res.status(200).send(categories);
   } catch (error) {
-    res.status(500).send(err);
+    res.status(400).send(err);
   }
 });
 
-routes.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    res.status(200).send();
+    const category = await CategoryModel.findById(req.params.id);
+    if (!category) res.status(400).send('Invalid Category Id');
+    res.status(200).send(category);
   } catch (error) {
-    res.status(500).send(err);
+    res.status(400).send(err);
   }
 });
 
-routes.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    res.status(200).send();
+    let category = new CategoryModel(_.pick(req.body, ['categoryname']));
+    await category.save();
+    res.status(200).send(category);
   } catch (error) {
-    res.status(500).send(err);
+    res.status(400).send(err);
   }
 });
 
-routes.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    res.status(200).send();
+    let category = await CategoryModel.findByIdAndUpdate(
+      req.body.categoryname,
+      {
+        $set: {
+          categoryname: req.body.categoryname,
+        },
+      },
+      { new: true }
+    );
+    res.status(200).send(category);
   } catch (error) {
-    res.status(500).send(err);
+    res.status(400).send(err);
   }
 });
 
-routes.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    res.status(200).send();
+    const category = await CategoryModel.findByIdAndDelete(req.params.id);
+    res.status(200).send(category);
   } catch (error) {
-    res.status(500).send(err);
+    res.status(400).send(err);
   }
 });
+
+module.exports = router;
