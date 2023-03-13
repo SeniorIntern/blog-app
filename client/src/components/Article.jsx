@@ -4,36 +4,48 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import '../styles/Article.css';
 
-export default function Article() {
+export default function Article({
+  title,
+  description,
+  user,
+  datePosted,
+  category,
+}) {
+  const date = new Date(datePosted);
+  const year = date.getFullYear().toString().slice(-2);
+  const month = date.toLocaleString('default', { month: 'long' });
+  const day = date.getDate().toString();
+
+  const alphabeticalDate = `${year} ${month} ${day}`;
+
   return (
     <article className="article">
       <div className="article__author">
         <div className="author__name">
           <p>
-            <PermIdentityOutlinedIcon /> Nikhil Thapa
+            {console.log(user)}
+            <PermIdentityOutlinedIcon /> {user.username.toUpperCase()}
           </p>
-          <p>March 7, 2023</p>
+          <p>{alphabeticalDate}</p>
         </div>
       </div>
       <div className="article__content">
-        <div className="content_description">
-          <h2>JavaScritp is an awesome language.</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, eaque
-            tempore corrupti sapiente earum totam quasi obcaecati, nisi eligendi
-            ut placeat vitae quis laboriosam unde perferendis praesentium a
-            inventore dolorem?
-          </p>
+        <div className="content__description">
+          <h2>{title}</h2>
+          <p>{description}</p>
         </div>
         <div className="article__image">
           <img src={dummyImg} alt="programming" />
         </div>
       </div>
       <div className="article__informations">
-        <h5>JavaScript</h5>
-        <p className="space"></p>
-        <FavoriteBorderOutlinedIcon />
-        <p className="likes">24</p>
+        <div className="article__tags">
+          <p>{category.categoryName}</p>
+        </div>
+        <div className="article__likes">
+          <FavoriteBorderOutlinedIcon />
+          <p>24</p>
+        </div>
       </div>
     </article>
   );

@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { BlogModel } = require('../models/Blog');
-const _ = requrie('lodash');
+const { CategoryModel } = require('../models/Category');
+const { UserModel } = require('../models/User');
+const _ = require('lodash');
 
 // blog to display on timeline/feed
 router.get('/', async (req, res) => {
@@ -19,7 +21,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const blog = await BlogModel.findById(req.params.id);
-    if (!blog) res.status(400).send('Invalid Blog Id.');
+    if (!blog) return res.status(400).send('Invalid Blog Id.');
     res.status(200).send(blog);
   } catch (err) {
     res.status(400).send(err.message);
@@ -28,16 +30,28 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const blog = new BlogModel(
-      _.pick(req.body, [
-        'title',
-        'description',
-        'likeCount',
-        'title',
-        'userId',
-        'categoryId',
-      ])
-    );
+    const user = await UserModel.findById(req.body.userId);
+    if (!user) return res.status(400).send('Invalid user Id.');
+
+    const category = await CategoryModel.findById(req.body.categoryId);
+    if (!category) return res.status(400).send('Invalid Category Id.');
+
+    const blog = new BlogModel({
+      title: req.body.title,
+      description: req.body.description,
+      likeCount: req.body.likeCount,
+      title: req.body.title,
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+      },
+      category: {
+        _id: category._id,
+        categoryName: category.categoryName,
+      },
+      // category: category,
+    });
     await blog.save();
     res.status(200).send(blog);
   } catch (err) {

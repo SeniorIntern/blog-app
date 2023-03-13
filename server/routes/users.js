@@ -26,14 +26,19 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    let user = UserModel.find({ email: req.body.email });
-    if (user) res.status(400).send('User Already Registered.');
+    let user = await UserModel.findOne({ email: req.body.email });
+    if (user) return res.status(400).send('User Already Registered.');
 
-    user = new UserModel(_.pick(req.body, ['username', 'email', 'password']));
+    user = new UserModel(
+      _.pick(req.body, ['username', 'userDesc', 'email', 'password'])
+    );
+
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     await user.save();
-    res.status(200).send(user);
+    res
+      .status(200)
+      .send(_.pick(user, ['_id', 'username', 'userDesc', 'email']));
   } catch (err) {
     res.status(400).send(err.message);
   }
@@ -44,11 +49,7 @@ router.put('/:id', async (req, res) => {
     const user = await UserModel.findByIdAndUpdate(
       { _id: req.params.id },
       {
-        $set: {
-          username: req.body.username,
-          email: req.body.email,
-          password: req.body.password,
-        },
+        $set: _.pick(req.body, ['username', 'userDesc', 'email', 'password']),
       },
       { new: true }
     );

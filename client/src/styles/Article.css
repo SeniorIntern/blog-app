@@ -14,22 +14,11 @@
 .article__content {
   margin: 1.2em 0;
 }
-
 .article__informations {
   display: flex;
   justify-content: space-between;
 }
 
-.information__tags {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-}
-
-.space {
-  width: 100%;
-}
-
-.likes {
-  align-items: flex-end;
+.content__description > p {
+  color: var(--text-color-grey);
 }

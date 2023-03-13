@@ -39,9 +39,6 @@ input[type='text']:focus {
   outline: 0;
 }
 
-.right {
-}
-
 span {
   background-color: var(--color-blue);
   border: none;

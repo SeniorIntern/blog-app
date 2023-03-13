@@ -8,8 +8,11 @@ const dbConnectionStatus = require('debug')('app:dbStatus');
 const users = require('./routes/users');
 const blogs = require('./routes/blogs');
 const categories = require('./routes/categories');
+const cors = require('cors');
 
 app.use(express.json());
+// Enable CORS
+app.use(cors());
 
 if (!config.get('jwtPrivateKey')) {
   console.log('jwt key is not set');
