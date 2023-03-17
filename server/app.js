@@ -3,12 +3,13 @@ const config = require('config');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const appConnectionStatus = require('debug')('app:dbStatus');
-const dbConnectionStatus = require('debug')('app:dbStatus');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 const blogs = require('./routes/blogs');
 const categories = require('./routes/categories');
 const cors = require('cors');
+const appConnectionStatus = require('debug')('app:dbStatus');
+const dbConnectionStatus = require('debug')('app:dbStatus');
 
 app.use(express.json());
 // Enable CORS
@@ -25,6 +26,7 @@ mongoose
   .catch((err) => console.log(err.message));
 
 app.use('/api/users', users);
+app.use('/api/auth', auth);
 app.use('/api/blogs', blogs);
 app.use('/api/categories', categories);
 

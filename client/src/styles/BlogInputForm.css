@@ -1,0 +1,35 @@
+.BlogInputForm {
+  border: 1px solid #6b788c;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+input[type='text'] {
+  border: 1px solid #6b788c;
+  border-radius: 2em;
+  margin-bottom: 1.2em;
+  width: 100%;
+  text-align: left;
+  color: cyan;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.blog__paragraph {
+  background: transparent;
+  color: cyan;
+  font-size: 1rem;
+}
+
+.blog__category {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.blog__category > select {
+  width: 24%;
+}

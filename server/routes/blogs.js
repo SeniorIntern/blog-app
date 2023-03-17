@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
       likeCount: req.body.likeCount,
       title: req.body.title,
       user: {
-        _id: user._id,
+        // _id: user._id,
         username: user.username,
         email: user.email,
       },

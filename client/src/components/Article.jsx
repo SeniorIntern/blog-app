@@ -19,30 +19,29 @@ export default function Article({
   const alphabeticalDate = `${year} ${month} ${day}`;
 
   return (
-    <article className="article">
-      <div className="article__author">
-        <div className="author__name">
+    <article className='article'>
+      <div className='article__author'>
+        <div className='author__name'>
           <p>
-            {console.log(user)}
             <PermIdentityOutlinedIcon /> {user.username.toUpperCase()}
           </p>
           <p>{alphabeticalDate}</p>
         </div>
       </div>
-      <div className="article__content">
-        <div className="content__description">
+      <div className='article__content'>
+        <div className='content__description'>
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
-        <div className="article__image">
-          <img src={dummyImg} alt="programming" />
+        <div className='article__image'>
+          <img src={dummyImg} alt='programming' />
         </div>
       </div>
-      <div className="article__informations">
-        <div className="article__tags">
+      <div className='article__informations'>
+        <div className='article__tags'>
           <p>{category.categoryName}</p>
         </div>
-        <div className="article__likes">
+        <div className='article__likes'>
           <FavoriteBorderOutlinedIcon />
           <p>24</p>
         </div>

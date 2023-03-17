@@ -4,7 +4,7 @@
   background-color: var(--background-blue);
   align-items: center;
   height: 4.4em;
-  padding: 0.2em 2em;
+  padding: 0.4em 2em;
   justify-content: space-between;
 }
 
@@ -13,7 +13,6 @@
   display: flex;
   align-items: center;
   height: 100%;
-  width: 10em;
   padding: 0;
   margin: 0;
 }
@@ -39,11 +38,14 @@ input[type='text']:focus {
   outline: 0;
 }
 
-span {
-  background-color: var(--color-blue);
-  border: none;
-  border-radius: 1rem;
-  font-size: 1.2rem;
-  color: white;
-  padding: 0.2em 1em;
+.profile__image {
+  border-radius: 50%;
+  max-width: 2.8em;
+  margin: 0;
+}
+
+.right > p {
+  margin: 0 0.2em;
+  padding: 0;
+  max-width: fit-content;
 }

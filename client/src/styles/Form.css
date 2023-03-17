@@ -1,0 +1,12 @@
+.form__container {
+  border: 1px solid #6b788c;
+  padding: 1.4em;
+  border-radius: 2em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}

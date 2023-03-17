@@ -21,3 +21,34 @@ body {
   grid-column-gap: 24px;
   grid-row-gap: 0px;
 }
+
+.post {
+  background-color: var(--color-blue);
+  border: none;
+  max-width: fit-content;
+  padding: 1em 2em;
+  border-radius: 1em;
+  display: flex;
+  margin: 1em auto;
+}
+
+.btn {
+  color: white;
+  background-color: var(--color-blue);
+  width: fit-content;
+  padding: 0.6em 1.4em;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1.2em;
+  cursor: pointer;
+}
+
+h3 {
+  display: flex;
+  margin-top: 1.4em;
+}
+
+u {
+  text-transform: uppercase;
+}

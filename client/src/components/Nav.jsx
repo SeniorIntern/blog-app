@@ -6,7 +6,7 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 export default function Nav() {
   return (
-    <nav className="nav">
+    <nav className='nav'>
       <ul>
         <li>
           <ArticleOutlinedIcon />

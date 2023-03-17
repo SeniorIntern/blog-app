@@ -9,7 +9,6 @@ const BlogModel = mongoose.model(
       title: {
         type: String,
         required: true,
-        unique: true,
         minlength: 5,
         maxlegth: 52,
       },
@@ -17,7 +16,6 @@ const BlogModel = mongoose.model(
       description: {
         type: String,
         required: true,
-        unique: true,
         minlength: 20,
         maxlegth: 800,
       },

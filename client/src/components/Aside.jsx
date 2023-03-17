@@ -1,12 +1,12 @@
 import '../styles/Aside.css';
 
-export default function Aside() {
+export default function Aside({ name }) {
   return (
-    <aside className="aside">
+    <aside className='aside'>
       <h2>
-        <u>Howdy Nikhil</u>
+        <u>Hello {name}</u>
       </h2>
-      <nav className="nav">
+      <nav className='nav'>
         <ul>
           <li>My Feed</li>
           <li>Explore</li>

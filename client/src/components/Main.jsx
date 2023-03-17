@@ -6,6 +6,7 @@ import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import '../styles/Main.css';
 import { useEffect, useState } from 'react';
+
 export default function Main() {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -17,9 +18,9 @@ export default function Main() {
   }, []);
 
   return (
-    <main className="main" style={{ borderRadius: '1em' }}>
-      <div className="feed__options">
-        <div className="sort__options">
+    <main className='main' style={{ borderRadius: '1em' }}>
+      <div className='feed__options'>
+        <div className='sort__options'>
           <p>
             <StarBorderOutlinedIcon />
             Personalized
@@ -33,8 +34,8 @@ export default function Main() {
             Features
           </p>
         </div>
-        <p className="space"></p>
-        <div className="view__options">
+        <p className='space'></p>
+        <div className='view__options'>
           <p>
             <FilterAltOutlinedIcon />
           </p>
@@ -46,9 +47,6 @@ export default function Main() {
       </div>
       <article>
         {articles.map((article) => {
-          {
-            console.table(article);
-          }
           return <Article key={article._id} {...article} />;
         })}
       </article>
