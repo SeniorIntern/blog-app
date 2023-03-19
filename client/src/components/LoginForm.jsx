@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../styles/Form.css';
 import { apiUrl } from '../config.json';
 
-const apiEndpoint = apiUrl + '/auth';
+const apiEndpoint = apiUrl + 'auth/';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -23,6 +23,7 @@ export default function LoginForm() {
         password: password,
       })
       .then((data) => {
+        console.log(data);
         localStorage.setItem('token', data.data);
         console.table(data.data);
         toast.success('Thank You For Joining Us. Redirecting...', {
@@ -35,7 +36,7 @@ export default function LoginForm() {
           progress: undefined,
           theme: 'dark',
         });
-        window.location = '/';
+        // window.location = '/';
       })
       .catch((error) => {
         console.log(error.message);

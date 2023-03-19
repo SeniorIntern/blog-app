@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../styles/Form.css';
 import { apiUrl } from '../config.json';
 
-const apiEndpoint = apiUrl + '/users';
+const apiEndpoint = apiUrl + 'users/';
 
 export default function RegisterForm() {
   const [username, setUsername] = useState('');

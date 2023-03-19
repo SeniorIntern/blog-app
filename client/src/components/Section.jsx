@@ -3,12 +3,15 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import sponge from '../assets/img/sponge.jpeg';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../config.json';
 
 export default function Section() {
+  const apiEndpoint = apiUrl + 'users/';
+
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getArticles = async () => {
-      const response = await fetch(`http://127.0.0.1:3000/api/users/`);
+      const response = await fetch(apiEndpoint);
       setUsers(await response.json());
     };
     getArticles();

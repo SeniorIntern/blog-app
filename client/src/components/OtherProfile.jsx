@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import '../styles/UserProfile.css';
 import Article from './Article';
+import { apiUrl } from '../config.json';
 
 export default function OtherProfile() {
+  const apiEndpoint = apiUrl + `blogs/${username}`;
+
   const { username } = useParams();
   const [userArticles, setUserArticles] = useState([]);
 
   useEffect(() => {
     const getArticles = async () => {
-      const response = await fetch(
-        `http://127.0.0.1:3000/api/blogs/${username}`
-      );
+      const response = await fetch(apiEndpoint);
       setUserArticles(await response.json());
     };
     getArticles();

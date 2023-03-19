@@ -34,3 +34,8 @@ input[type='text'] {
 .blog__category > select {
   width: 24%;
 }
+
+.blog__action > button {
+  display: flex;
+  margin: 0 auto;
+}

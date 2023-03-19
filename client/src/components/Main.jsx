@@ -7,12 +7,15 @@ import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import '../styles/Main.css';
 import { useEffect, useState } from 'react';
 import Section from './Section';
+import { apiUrl } from '../config.json';
 
 export default function Main() {
+  const apiEndpoint = apiUrl + 'blogs/';
+
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     const getArticles = async () => {
-      const response = await fetch(`http://127.0.0.1:3000/api/blogs/`);
+      const response = await fetch(apiEndpoint);
       setArticles(await response.json());
     };
     getArticles();

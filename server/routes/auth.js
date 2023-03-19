@@ -8,11 +8,16 @@ router.post('/', async (req, res) => {
     const user = await UserModel.findOne({ email: req.body.email });
     if (!user) res.status(400).send('Invalid email or password.');
 
-    const decode = await bcrypt.compare(req.body.password, user.password);
-    if (!decode) res.status(400).send('Invalid email or password.');
+    const validate = await bcrypt.compare(req.body.password, user.password);
+    if (!validate) res.status(400).send('Invalid email or password.');
 
-    const token = user.generateAuthToken();
-    res.status(200).send(token);
+    const token = await user.generateAuthToken();
+
+    res
+      .status(200)
+      .header('x-auth-token', token)
+      .header('access-control-expose-headers', 'x-auth-token')
+      .send(token);
   } catch (err) {
     res.send(err.message);
   }

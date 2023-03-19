@@ -56,7 +56,6 @@ router.post('/', auth, async (req, res) => {
         _id: category._id,
         categoryName: category.categoryName,
       },
-      // category: category,
     });
     await blog.save();
     res.status(200).send(blog);

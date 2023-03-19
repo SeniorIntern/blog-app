@@ -45,7 +45,10 @@ export default function App() {
             <Section />
             <Routes>
               <Route path='/' element={<Main />} />
-              <Route path='/write' element={<BlogInputForm />} />
+              <Route
+                path='/write'
+                element={<BlogInputForm userObj={userObj} />}
+              />
               <Route
                 path='/profile'
                 element={<UserProfile userObj={userObj} />}

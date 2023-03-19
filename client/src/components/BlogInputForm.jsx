@@ -1,29 +1,80 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import '../styles/BlogInputForm.css';
+import { apiUrl } from '../config.json';
+import { toast } from 'react-toastify';
 
-export default function BlogInputForm() {
+const apiEndpoint = apiUrl + `blogs/`;
+
+export default function BlogInputForm({ userObj }) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [userId, setUserId] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent default form submission
+
+    axios
+      .post(apiEndpoint, {
+        title: title,
+        description: description,
+        userId: userObj._id,
+        categoryId: categoryId,
+      })
+      .then((data) => {
+        console.log(data);
+        toast.success('Your blog is posted.', {
+          position: 'top-center',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+        setTimeout(() => {
+          window.location = '/';
+        }, 1000);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className='BlogInputForm'>
-      <div className='blog__title'>
-        <input type='text' placeholder='Blog Title...' />
-      </div>
-      <div className='blog__category'>
-        <p>Category: </p>
-        <select name='' id=''>
-          <option value='JavaScript'>JavaScript</option>
-          <option value='web3'>web3</option>
-          <option value='ReactJS'>ReactJS</option>
-        </select>
-      </div>
-      <div className='blog__description'>
+      <form
+        className='form'
+        action='apiEndpoint'
+        method='post'
+        onSubmit={handleSubmit}
+      >
+        <input
+          value={title}
+          type='text'
+          placeholder='Blog Title...'
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          value={categoryId}
+          type='text'
+          placeholder='Category Id'
+          onChange={(e) => setCategoryId(e.target.value)}
+        />
         <textarea
+          type='text'
           className='blog__paragraph'
           rows='10'
+          value={description}
           placeholder='Blog Paragraph...'
-        ></textarea>
-      </div>
-      <div className='blog__action'>
-        <button className='post'>POST</button>
-      </div>
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button type='submit' className='btn'>
+          POST
+        </button>
+      </form>
     </div>
   );
 }
