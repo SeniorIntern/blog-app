@@ -12,7 +12,21 @@ export default function Header({ data }) {
     <header className='header'>
       <div className='left'>
         <Link to='/'>
-          <img src={logo} alt='blog app' />
+          {/* <img src={logo} alt='blog app' /> */}
+          <picture>
+            <svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+              <rect fill='#000' />
+              <text
+                x='50'
+                y='60'
+                textAnchor='middle'
+                fill='#fff'
+                fontFamily='Poppins'
+              >
+                Blog App
+              </text>
+            </svg>
+          </picture>
         </Link>
       </div>
       <div className='center'>
@@ -31,7 +45,9 @@ export default function Header({ data }) {
               </Link>
             </p>
             <p>
-              <Link to='/profile'>{data.username}</Link>
+              <Link className='username' to='/profile'>
+                {data.username}
+              </Link>
             </p>
             <p>
               <Link to='/logout'>

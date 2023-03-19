@@ -25,7 +25,7 @@ export default function Article({
           <p>
             <PermIdentityOutlinedIcon /> {user.username.toUpperCase()}
           </p>
-          <p>{alphabeticalDate}</p>
+          <time>{alphabeticalDate}</time>
         </div>
       </div>
       <div className='article__content'>

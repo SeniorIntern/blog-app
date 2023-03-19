@@ -1,0 +1,27 @@
+.user__information {
+  background-color: var(--background-blue);
+  margin-bottom: 1.4em;
+  padding: 1em;
+}
+
+details {
+  text-align: center;
+
+  text-transform: uppercase;
+  border: 1px solid white;
+  color: cyan;
+}
+
+summary {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+section {
+  text-align: left;
+  margin-left: 2em;
+}
+
+section > p {
+  color: white;
+}

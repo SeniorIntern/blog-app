@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   height: 100%;
+  width: fit-content;
   padding: 0;
   margin: 0;
 }
@@ -23,8 +24,10 @@
 }
 
 input[type='text'] {
+  color: cyan;
   font-size: 1rem;
-  text-align: center;
+  font-weight: bold;
+  text-align: left;
   width: 100%;
   height: 100%;
   border: 0.6px solid #6b788c;
@@ -48,4 +51,16 @@ input[type='text']:focus {
   margin: 0 0.2em;
   padding: 0;
   max-width: fit-content;
+}
+
+text {
+  font-weight: bolder;
+}
+
+.username {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 1.4rem;
 }

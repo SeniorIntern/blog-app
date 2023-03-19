@@ -1,6 +1,7 @@
 .article {
   padding: 1.2em;
   border-bottom: 1px solid grey;
+  background-color: var(--background-blue);
 }
 
 .article__content {

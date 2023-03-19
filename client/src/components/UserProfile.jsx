@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Article from './Article';
+import '../styles/UserProfile.css';
 
-export default function UserProfile() {
+export default function UserProfile({ userObj }) {
+  const [myArticles, setMyArticles] = useState([]);
+  useEffect(() => {
+    const getArticles = async () => {
+      const response = await fetch(
+        `http://127.0.0.1:3000/api/blogs/${userObj.username}`
+      );
+      setMyArticles(await response.json());
+    };
+    getArticles();
+  }, []);
+
   return (
     <div className='UserProfile'>
       {/* fetch user details and display */}
       <div className='user__information'>
-        <h1>USERNAME</h1>
-        <p>username:</p>
-        <p>email:</p>
-        <p>Total Blog Post(s):</p>
+        <details open>
+          <summary>
+            <u>User Information</u>
+          </summary>
+          <section>
+            <p>username: {userObj.username}</p>
+            <p>email: {userObj.email}</p>
+            <p>Total Blog Post(s):</p>
+          </section>
+        </details>
       </div>
       <article className='user__article'>
-        {/* map user articles */}
-        {/* <Article /> */}
+        {console.log(myArticles)}
+        {myArticles.map((article) => {
+          return <Article key={article._id} {...article} />;
+        })}
       </article>
     </div>
   );

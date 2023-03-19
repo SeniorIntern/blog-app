@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
   try {
-    const users = await UserModel.find().select('-password');
+    const users = await UserModel.find().select('_id username email');
     res.status(200).send(users);
   } catch (err) {
     res.status(500).send(err.message);

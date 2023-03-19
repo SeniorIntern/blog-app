@@ -4,6 +4,8 @@ const { BlogModel } = require('../models/Blog');
 const { CategoryModel } = require('../models/Category');
 const { UserModel } = require('../models/User');
 const _ = require('lodash');
+const admin = require('../middleware/admin');
+const auth = require('../middleware/auth');
 
 // blog to display on timeline/feed
 router.get('/', async (req, res) => {
@@ -18,17 +20,21 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:username', async (req, res) => {
   try {
-    const blog = await BlogModel.findById(req.params.id);
-    if (!blog) return res.status(400).send('Invalid Blog Id.');
+    const blog = await BlogModel.find({
+      'user.username': req.params.username,
+    });
+    if (!blog)
+      return res.status(400).send(`No Blog Found For User ${req.params.email}`);
+    // res.status(200).send(blog);
     res.status(200).send(blog);
   } catch (err) {
     res.status(400).send(err.message);
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   try {
     const user = await UserModel.findById(req.body.userId);
     if (!user) return res.status(400).send('Invalid user Id.');
@@ -59,7 +65,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   try {
     const blog = await BlogModel.findByIdAndUpdate(
       req.params.id,
@@ -81,7 +87,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [auth, admin], async (req, res) => {
   try {
     const blog = BlogModel.findByIdAndDelete(req.params.id);
     res.status(200).send(blog);

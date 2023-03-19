@@ -1,12 +1,22 @@
 .section {
   border-radius: 1em 1em 0 0;
   background-color: var(--background-blue);
+  margin: 0 auto;
   margin-bottom: 1.2em;
-  width: 100%;
+  border-radius: 1.2em;
+  width: 80%;
+}
+
+.users__list {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 
 .figure {
   display: flex;
+  flex-direction: row;
   padding: 1em;
   border-radius: 50%;
   max-width: 6em;

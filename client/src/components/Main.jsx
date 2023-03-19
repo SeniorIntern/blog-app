@@ -6,19 +6,20 @@ import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import '../styles/Main.css';
 import { useEffect, useState } from 'react';
+import Section from './Section';
 
 export default function Main() {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     const getArticles = async () => {
-      const response = await fetch('http://127.0.0.1:3000/api/blogs/');
+      const response = await fetch(`http://127.0.0.1:3000/api/blogs/`);
       setArticles(await response.json());
     };
     getArticles();
   }, []);
 
   return (
-    <main className='main' style={{ borderRadius: '1em' }}>
+    <main className='main'>
       <div className='feed__options'>
         <div className='sort__options'>
           <p>

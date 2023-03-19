@@ -6,6 +6,7 @@
   padding: 1.4em;
   width: 80%;
   margin: 0 auto;
+  background-color: var(--background-blue);
 }
 
 input[type='text'] {

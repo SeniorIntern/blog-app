@@ -1,9 +1,11 @@
 import './App.css';
 import React, { lazy, Suspense, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { useEffect } from 'react';
 import Logout from './components/Logout';
+import OtherProfile from './components/OtherProfile';
+import NotFound from './components/NotFound';
 
 const Header = lazy(() => import('./components/Header'));
 const Aside = lazy(() => import('./components/Aside'));
@@ -44,10 +46,15 @@ export default function App() {
             <Routes>
               <Route path='/' element={<Main />} />
               <Route path='/write' element={<BlogInputForm />} />
+              <Route
+                path='/profile'
+                element={<UserProfile userObj={userObj} />}
+              />
+              <Route path='/user/:username' element={<OtherProfile />} />
               <Route path='/login' element={<LoginForm />} />
-              <Route path='/logout' element={<Logout />} />
               <Route path='/register' element={<RegisterForm />} />
-              <Route path='/profile' element={<UserProfile />} />
+              <Route path='/logout' element={<Logout />} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </main>
           <aside>
