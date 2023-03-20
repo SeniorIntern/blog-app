@@ -5,18 +5,36 @@ import { apiUrl } from '../config.json';
 import { toast } from 'react-toastify';
 
 const apiEndpoint = apiUrl + `blogs/`;
+const apiCategoriesEndpoint = apiUrl + `categories/`;
 
 export default function BlogInputForm({ userObj }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [userId, setUserId] = useState('');
   const [categoryId, setCategoryId] = useState('');
+  const [categories, setCategories] = useState([]);
 
   const token = localStorage.getItem('token');
   console.log(`Token from BlogInputForm ${token}`);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await axios.get(apiCategoriesEndpoint);
+        setCategories(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent default form submission
+    e.preventDefault();
+    console.log(
+      `title: ${title},description: ${description},userObj: ${userObj._id},categoryId: ${categoryId}`
+    );
 
     axios
       .post(
@@ -33,21 +51,8 @@ export default function BlogInputForm({ userObj }) {
           },
         }
       )
-      .then((data) => {
-        console.log(data);
-        toast.success('Your blog is posted.', {
-          position: 'top-center',
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-        setTimeout(() => {
-          window.location = '/';
-        }, 1000);
+      .then(() => {
+        window.location = '/';
       })
       .catch((error) => {
         console.log(error.message);
@@ -68,12 +73,17 @@ export default function BlogInputForm({ userObj }) {
           placeholder='Blog Title...'
           onChange={(e) => setTitle(e.target.value)}
         />
-        <input
+        <select
           value={categoryId}
-          type='text'
-          placeholder='Category Id'
           onChange={(e) => setCategoryId(e.target.value)}
-        />
+        >
+          <option value=''>Select a Category</option>
+          {categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {category.categoryName}
+            </option>
+          ))}
+        </select>
         <textarea
           type='text'
           className='blog__paragraph'

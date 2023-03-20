@@ -86,12 +86,14 @@ router.put('/:id', auth, async (req, res) => {
   }
 });
 
-router.delete('/:id', [auth, admin], async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
-    const blog = BlogModel.findByIdAndDelete(req.params.id);
+    const blog = await BlogModel.findByIdAndDelete(req.params.id);
+    if (!blog) res.status(404).send('Invalid blog Id.');
+
     res.status(200).send(blog);
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).send(`delete operation failed: ${err.message}`);
   }
 });
 

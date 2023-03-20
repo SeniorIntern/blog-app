@@ -19,7 +19,7 @@ export default function Main() {
       setArticles(await response.json());
     };
     getArticles();
-  }, []);
+  }, [articles]);
 
   return (
     <main className='main'>

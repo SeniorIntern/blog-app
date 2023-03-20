@@ -36,7 +36,7 @@ export default function LoginForm() {
           progress: undefined,
           theme: 'dark',
         });
-        // window.location = '/';
+        window.location = '/';
       })
       .catch((error) => {
         console.log(error.message);

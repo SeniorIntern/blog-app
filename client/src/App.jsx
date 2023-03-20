@@ -25,11 +25,10 @@ export default function App() {
     try {
       const jwt = localStorage.getItem('token');
       const user = jwtDecode(jwt);
-      console.log(user);
       setUserObj(user);
       setName(user.username);
     } catch (ex) {
-      console.log(ex.message);
+      console.log('No User Logged In.');
     }
   }, []);
 
@@ -45,18 +44,22 @@ export default function App() {
             <Section />
             <Routes>
               <Route path='/' element={<Main />} />
-              <Route
-                path='/write'
-                element={<BlogInputForm userObj={userObj} />}
-              />
-              <Route
-                path='/profile'
-                element={<UserProfile userObj={userObj} />}
-              />
-              <Route path='/user/:username' element={<OtherProfile />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/register' element={<RegisterForm />} />
               <Route path='/logout' element={<Logout />} />
+              <Route
+                path='/write'
+                element={<BlogInputForm userObj={userObj} />}
+              ></Route>
+              <Route
+                path='/write'
+                element={<BlogInputForm userObj={userObj} />}
+              ></Route>
+              <Route
+                path='/profile'
+                element={<UserProfile userObj={userObj} />}
+              ></Route>
+              <Route path='/user/:username' element={<OtherProfile />}></Route>
               <Route path='*' element={<NotFound />} />
             </Routes>
           </main>

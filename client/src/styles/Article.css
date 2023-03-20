@@ -4,17 +4,26 @@
   background-color: var(--background-blue);
 }
 
+.article__author {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.author__action {
+  display: flex;
+  cursor: pointer;
+}
+
 .article__content {
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 24px;
   grid-row-gap: 0px;
-}
-
-.article__content {
   margin: 1.2em 0;
 }
+
 .article__informations {
   display: flex;
   justify-content: space-between;
