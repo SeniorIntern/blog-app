@@ -12,16 +12,27 @@ export default function BlogInputForm({ userObj }) {
   const [userId, setUserId] = useState('');
   const [categoryId, setCategoryId] = useState('');
 
+  const token = localStorage.getItem('token');
+  console.log(`Token from BlogInputForm ${token}`);
+
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent default form submission
 
     axios
-      .post(apiEndpoint, {
-        title: title,
-        description: description,
-        userId: userObj._id,
-        categoryId: categoryId,
-      })
+      .post(
+        apiEndpoint,
+        {
+          title: title,
+          description: description,
+          userId: userObj._id,
+          categoryId: categoryId,
+        },
+        {
+          headers: {
+            'x-auth-token': token,
+          },
+        }
+      )
       .then((data) => {
         console.log(data);
         toast.success('Your blog is posted.', {

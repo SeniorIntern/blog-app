@@ -5,10 +5,10 @@ import Article from './Article';
 import { apiUrl } from '../config.json';
 
 export default function OtherProfile() {
-  const apiEndpoint = apiUrl + `blogs/${username}`;
-
   const { username } = useParams();
   const [userArticles, setUserArticles] = useState([]);
+
+  const apiEndpoint = apiUrl + `blogs/${username}`;
 
   useEffect(() => {
     const getArticles = async () => {
