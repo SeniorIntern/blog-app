@@ -1,13 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { apiUrl } from '../config.json';
 import dummyImg from '../assets/img/programming.avif';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import '../styles/Article.css';
-import { apiUrl } from '../config.json';
-import jwtDecode from 'jwt-decode';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function Article({
   _id,
@@ -22,12 +22,14 @@ export default function Article({
   let userTokenUnDecoded = '';
   let userTokenDecode = { email: '0@gmail.com' };
 
-  if (localStorage.getItem('token')) {
-    console.log(`Token from Local Storage: ${localStorage.getItem('token')}`);
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      console.log(`Token from Local Storage: ${localStorage.getItem('token')}`);
 
-    userTokenUnDecoded = localStorage.getItem('token');
-    userTokenDecode = jwtDecode(userTokenUnDecoded);
-  }
+      userTokenUnDecoded = localStorage.getItem('token');
+      userTokenDecode = jwtDecode(userTokenUnDecoded);
+    }
+  }, []);
 
   const date = useMemo(() => new Date(datePosted), [datePosted]);
   const year = useMemo(() => date.getFullYear().toString().slice(-2), [date]);

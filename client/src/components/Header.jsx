@@ -1,8 +1,31 @@
-import '../styles/Header.css';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import { apiUrl } from '../config.json';
+import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
+import '../styles/Header.css';
 
 export default function Header({ data }) {
+  const apiEndpoint = apiUrl + 'users';
+  const [username, setUsername] = useState('');
+
+  const handleInputChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handleUserSearch = async () => {
+    try {
+      const response = await fetch(`${apiEndpoint}/${username}`);
+      const user = await response.json();
+      if (user == '') window.alert('User Not Found.');
+      else {
+        window.location = `/user/${user[0].username}`;
+        console.log(user);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <header className='header'>
       <div className='left'>
@@ -23,8 +46,16 @@ export default function Header({ data }) {
           </picture>
         </Link>
       </div>
-      <div className='center'>
-        <input type='text' placeholder="Search for people's posts" />
+      <div className='center find'>
+        <input
+          type='text'
+          value={username}
+          onChange={handleInputChange}
+          placeholder="Search for people's posts"
+        />
+        <button onClick={handleUserSearch} className='btn findIco'>
+          <PersonSearchOutlinedIcon />
+        </button>
       </div>
       <div className='right'>
         {data.username ? (

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../config.json';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/Form.css';
-import { apiUrl } from '../config.json';
 
 const apiEndpoint = apiUrl + 'users/';
 
@@ -14,10 +14,8 @@ export default function RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigateTo = useNavigate();
-
   const handleRegister = (e) => {
-    e.preventDefault(); // prevent default form submission
+    e.preventDefault();
 
     axios
       .post(apiEndpoint, {
@@ -39,7 +37,6 @@ export default function RegisterForm() {
           theme: 'dark',
         });
         setTimeout(() => {
-          // navigateTo('/');
           window.location = '/';
         }, 1000);
       })

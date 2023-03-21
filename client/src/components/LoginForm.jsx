@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/Form.css';
@@ -12,10 +12,8 @@ export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigateTo = useNavigate();
-
   const handleSignIn = (e) => {
-    e.preventDefault(); // prevent default form submission
+    e.preventDefault(); // prevent default behaviour on form submission
 
     axios
       .post(apiEndpoint, {
@@ -23,9 +21,7 @@ export default function LoginForm() {
         password: password,
       })
       .then((data) => {
-        console.log(data);
         localStorage.setItem('token', data.data);
-        console.table(data.data);
         toast.success('Thank You For Joining Us. Redirecting...', {
           position: 'top-center',
           autoClose: 1000,

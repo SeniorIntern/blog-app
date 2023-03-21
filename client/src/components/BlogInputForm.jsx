@@ -1,16 +1,18 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import '../styles/BlogInputForm.css';
 import { apiUrl } from '../config.json';
-import { toast } from 'react-toastify';
-
-const apiEndpoint = apiUrl + `blogs/`;
-const apiCategoriesEndpoint = apiUrl + `categories/`;
+import '../styles/BlogInputForm.css';
 
 export default function BlogInputForm({ userObj }) {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) window.location = '/';
+  }, []);
+  
+  const apiEndpoint = apiUrl + `blogs/`;
+  const apiCategoriesEndpoint = apiUrl + `categories/`;
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [userId, setUserId] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [categories, setCategories] = useState([]);
 

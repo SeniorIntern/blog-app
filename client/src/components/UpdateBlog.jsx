@@ -8,6 +8,10 @@ import { useParams } from 'react-router';
 const apiCategoriesEndpoint = apiUrl + `categories/`;
 
 export default function UpdateBlog() {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) window.location = '/';
+  }, []);
+
   const { id } = useParams();
   const apiEndpoint = apiUrl + `blogs/${id}`;
   console.log(apiEndpoint);

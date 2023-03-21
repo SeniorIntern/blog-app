@@ -8,11 +8,16 @@
   justify-content: space-between;
 }
 
+.center > input[type='text'] {
+  text-align: left;
+  color: cyan;
+}
+
 .left,
-.right {
+.right,
+.center {
   display: flex;
   align-items: center;
-  height: 100%;
   width: fit-content;
   padding: 0;
   margin: 0;
@@ -21,11 +26,17 @@
 .center {
   flex-grow: 1;
   margin: 0 2em;
+  width: 100%;
+}
+
+.findIco {
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
 }
 
 input[type='text'] {
   color: cyan;
-  font-size: 1rem;
   font-weight: bold;
   text-align: left;
   width: 100%;
@@ -39,12 +50,6 @@ input[type='text'] {
 
 input[type='text']:focus {
   outline: 0;
-}
-
-.profile__image {
-  border-radius: 50%;
-  max-width: 2.8em;
-  margin: 0;
 }
 
 .right > p {
@@ -62,5 +67,13 @@ text {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bolder;
-  font-size: 1.4rem;
+}
+
+.find {
+  display: flex;
+}
+
+.findIco {
+  height: fit-content;
+  width: fit-content;
 }

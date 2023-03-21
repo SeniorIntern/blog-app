@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { apiUrl } from '../config.json';
 import Article from './Article';
 import '../styles/UserProfile.css';
 
-import { apiUrl } from '../config.json';
-
 export default function UserProfile({ userObj }) {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) window.location = '/';
+  }, []);
+
   const apiEndpoint = apiUrl + `blogs/${userObj.username}`;
 
   const [myArticles, setMyArticles] = useState([]);

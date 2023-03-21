@@ -1,4 +1,3 @@
-import './App.css';
 import React, { lazy, Suspense, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
@@ -7,6 +6,7 @@ import Logout from './components/Logout';
 import OtherProfile from './components/OtherProfile';
 import NotFound from './components/NotFound';
 import UpdateBlog from './components/UpdateBlog';
+import './App.css';
 
 const Header = lazy(() => import('./components/Header'));
 const Aside = lazy(() => import('./components/Aside'));

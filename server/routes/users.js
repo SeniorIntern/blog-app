@@ -13,10 +13,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:searchName', async (req, res) => {
   try {
-    const user = await UserModel.findById(req.params.id).select('-password');
-    if (!user) res.status(404).send('Invalid User Id');
+    const user = await UserModel.find({
+      username: req.params.searchName,
+    }).select('-password');
+    if (!user) res.status(404).send('Invalid User Name');
 
     res.status(200).send(user);
   } catch (err) {

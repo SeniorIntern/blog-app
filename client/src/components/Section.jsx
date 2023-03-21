@@ -39,8 +39,8 @@ export default function Section({ name }) {
       ) : (
         <React.Fragment>
           <div className='guest__message'>
-            <h1>Howdy User!!!</h1>
-            <h1>Join Us to Get Access to Amazing Features</h1>
+            <h2>Howdy User!!!</h2>
+            <h2>Join Us to Get Access to Amazing Features</h2>
           </div>
         </React.Fragment>
       )}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { apiUrl } from '../config.json';
 import Article from './Article';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import ViewAgendaOutlinedIcon from '@mui/icons-material/ViewAgendaOutlined';
@@ -6,12 +7,11 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import '../styles/Main.css';
-import { apiUrl } from '../config.json';
 
 export default function Main() {
   const apiEndpoint = apiUrl + 'blogs/';
-
   const [articles, setArticles] = useState([]);
+  
   useEffect(() => {
     const getArticles = async () => {
       const response = await fetch(apiEndpoint);

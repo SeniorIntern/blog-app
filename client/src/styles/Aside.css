@@ -1,4 +1,16 @@
 .recent__articles {
   background-color: var(--background-blue);
   padding: 1em;
+  border-radius: 1em;
+}
+
+.blog__title {
+  border: 1px solid grey;
+  padding: 0.4em;
+  margin: 1em 0;
+  border-radius: 0.6em;
+}
+
+li {
+  font-size: 1.4rem;
 }

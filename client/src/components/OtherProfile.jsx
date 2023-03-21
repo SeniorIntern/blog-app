@@ -5,6 +5,10 @@ import Article from './Article';
 import { apiUrl } from '../config.json';
 
 export default function OtherProfile() {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) window.location = '/';
+  }, []);
+
   const { username } = useParams();
   const [userArticles, setUserArticles] = useState([]);
 
