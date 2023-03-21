@@ -10,10 +10,7 @@ const auth = require('../middleware/auth');
 // blog to display on timeline/feed
 router.get('/', async (req, res) => {
   try {
-    const blogs = await BlogModel.find()
-      .sort('datePosted')
-      .limit(10)
-      .select('-email');
+    const blogs = await BlogModel.find().sort('datePosted').select('-email');
     res.status(200).send(blogs);
   } catch (err) {
     res.status(400).send(err.message);
@@ -69,14 +66,7 @@ router.put('/:id', auth, async (req, res) => {
     const blog = await BlogModel.findByIdAndUpdate(
       req.params.id,
       {
-        $set: _.pick(req.body, [
-          'title',
-          'description',
-          'likeCount',
-          'title',
-          'userId',
-          'categoryId',
-        ]),
+        $set: _.pick(req.body, ['title', 'description', 'categoryId']),
       },
       { new: true }
     );

@@ -3,14 +3,16 @@ import { useEffect, useState } from 'react';
 import '../styles/BlogInputForm.css';
 import { apiUrl } from '../config.json';
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router';
 
-const apiEndpoint = apiUrl + `blogs/`;
 const apiCategoriesEndpoint = apiUrl + `categories/`;
 
-export default function BlogInputForm({ userObj }) {
+export default function UpdateBlog() {
+  const { id } = useParams();
+  const apiEndpoint = apiUrl + `blogs/${id}`;
+  console.log(apiEndpoint);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [userId, setUserId] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [categories, setCategories] = useState([]);
 
@@ -34,12 +36,11 @@ export default function BlogInputForm({ userObj }) {
     e.preventDefault();
 
     axios
-      .post(
+      .put(
         apiEndpoint,
         {
           title: title,
           description: description,
-          userId: userObj._id,
           categoryId: categoryId,
         },
         {

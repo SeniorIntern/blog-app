@@ -28,3 +28,10 @@
   border-radius: 50%;
   margin: 0 0.4em;
 }
+
+.guest__message {
+  border-radius: 1.2em;
+  padding: 1em;
+  text-align: center;
+  border: 1px solid cyan;
+}

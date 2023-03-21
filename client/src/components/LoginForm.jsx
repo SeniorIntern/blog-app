@@ -57,12 +57,19 @@ export default function LoginForm() {
           name='email'
           placeholder='email'
           value={email}
+          required={true}
+          minLength={10}
+          maxLength={54}
+          pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type='text'
           name='password'
           placeholder='password'
+          required={true}
+          minLength={7}
+          maxLength={32}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -70,12 +77,12 @@ export default function LoginForm() {
           LOGIN
         </button>
       </form>
-      <h3>
+      <h4>
         New User?
         <Link to='/register'>
           <button className='btn'>Join Us</button>
         </Link>
-      </h3>
+      </h4>
     </div>
   );
 }

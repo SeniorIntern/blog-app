@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import dummyImg from '../assets/img/programming.avif';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -8,6 +7,7 @@ import '../styles/Article.css';
 import { apiUrl } from '../config.json';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Article({
   _id,
@@ -16,21 +16,39 @@ export default function Article({
   user,
   datePosted,
   category,
+  updatedAt,
 }) {
+  const apiEndpoint = apiUrl + 'blogs';
+  let userTokenUnDecoded = '';
   let userTokenDecode = { email: '0@gmail.com' };
+
   if (localStorage.getItem('token')) {
-    const userTokenUnDecoded = localStorage.getItem('token');
+    console.log(`Token from Local Storage: ${localStorage.getItem('token')}`);
+
+    userTokenUnDecoded = localStorage.getItem('token');
     userTokenDecode = jwtDecode(userTokenUnDecoded);
   }
 
-  const date = new Date(datePosted);
-  const year = date.getFullYear().toString().slice(-2);
-  const month = date.toLocaleString('default', { month: 'long' });
-  const day = date.getDate().toString();
-
+  const date = useMemo(() => new Date(datePosted), [datePosted]);
+  const year = useMemo(() => date.getFullYear().toString().slice(-2), [date]);
+  const month = useMemo(
+    () => date.toLocaleString('default', { month: 'long' }),
+    [date]
+  );
+  const day = useMemo(() => date.getDate().toString(), [date]);
   const alphabeticalDate = `${year} ${month} ${day}`;
 
-  const apiEndpoint = apiUrl + 'blogs';
+  const updatedDate = useMemo(() => new Date(updatedAt), [updatedAt]);
+  const updatedYear = useMemo(
+    () => updatedDate.getFullYear().toString().slice(-2),
+    [updatedDate]
+  );
+  const updatedMonth = useMemo(
+    () => updatedDate.toLocaleString('default', { month: 'long' }),
+    [updatedDate]
+  );
+  const updatedDay = useMemo(() => date.getDate().toString(), [date]);
+  const modifiedDate = `${updatedYear} ${updatedMonth} ${updatedDay}`;
 
   const deleteArticle = async (blogId) => {
     if (window.confirm(`Are you sure you want to delete?: ${blogId}`)) {
@@ -58,7 +76,9 @@ export default function Article({
           <React.Fragment>
             <div className='author__action'>
               <p>
-                <EditOutlinedIcon />
+                <Link to={`/update/${_id}`} className='link'>
+                  <EditOutlinedIcon />
+                </Link>
               </p>
               <p onClick={() => deleteArticle(_id)}>
                 <DeleteOutlineOutlinedIcon />
@@ -83,8 +103,8 @@ export default function Article({
           <p>{category.categoryName}</p>
         </div>
         <div className='article__likes'>
-          <FavoriteBorderOutlinedIcon />
-          <p>24</p>
+          <p>updated @</p>
+          <p>{modifiedDate}</p>
         </div>
       </div>
     </article>

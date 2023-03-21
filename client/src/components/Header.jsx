@@ -1,10 +1,5 @@
-import logo from '../assets/icons/mono.png';
 import '../styles/Header.css';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import { Link, Route, Routes } from 'react-router-dom';
-import sponge from '../assets/img/sponge.jpeg';
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 export default function Header({ data }) {
@@ -12,7 +7,6 @@ export default function Header({ data }) {
     <header className='header'>
       <div className='left'>
         <Link to='/'>
-          {/* <img src={logo} alt='blog app' /> */}
           <picture>
             <svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
               <rect fill='#000' />
@@ -33,10 +27,6 @@ export default function Header({ data }) {
         <input type='text' placeholder="Search for people's posts" />
       </div>
       <div className='right'>
-        <p>
-          <DarkModeOutlinedIcon />
-        </p>
-
         {data.username ? (
           <React.Fragment>
             <p>

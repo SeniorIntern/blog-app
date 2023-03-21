@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Article from './Article';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import ViewAgendaOutlinedIcon from '@mui/icons-material/ViewAgendaOutlined';
@@ -5,8 +6,6 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import '../styles/Main.css';
-import { useEffect, useState } from 'react';
-import Section from './Section';
 import { apiUrl } from '../config.json';
 
 export default function Main() {

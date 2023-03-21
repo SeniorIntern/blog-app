@@ -62,13 +62,19 @@ export default function RegisterForm() {
           name='username'
           placeholder='username'
           value={username}
+          required={true}
+          minLength={3}
+          maxLength={32}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type='text'
           name='userDesc'
-          placeholder='Short Description About YourSelf.'
+          placeholder='Few Words About YourSelf.'
           value={userDesc}
+          required={true}
+          minLength={3}
+          maxLength={32}
           onChange={(e) => setUserDesc(e.target.value)}
         />
         <input
@@ -76,6 +82,10 @@ export default function RegisterForm() {
           name='email'
           placeholder='email'
           value={email}
+          required={true}
+          minLength={10}
+          maxLength={54}
+          pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
@@ -83,18 +93,21 @@ export default function RegisterForm() {
           name='password'
           placeholder='password'
           value={password}
+          required={true}
+          minLength={3}
+          maxLength={32}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className='btn' type='submit'>
           Sign Up
         </button>
       </form>
-      <h3>
+      <h4>
         Already Joined?
         <Link to='/login'>
           <button className='btn'>Sign In</button>
         </Link>
-      </h3>
+      </h4>
     </div>
   );
 }

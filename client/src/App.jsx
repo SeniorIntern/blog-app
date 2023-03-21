@@ -1,11 +1,12 @@
 import './App.css';
 import React, { lazy, Suspense, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { useEffect } from 'react';
 import Logout from './components/Logout';
 import OtherProfile from './components/OtherProfile';
 import NotFound from './components/NotFound';
+import UpdateBlog from './components/UpdateBlog';
 
 const Header = lazy(() => import('./components/Header'));
 const Aside = lazy(() => import('./components/Aside'));
@@ -41,7 +42,7 @@ export default function App() {
             <Nav />
           </nav>
           <main>
-            <Section />
+            <Section name={name} />
             <Routes>
               <Route path='/' element={<Main />} />
               <Route path='/login' element={<LoginForm />} />
@@ -51,10 +52,7 @@ export default function App() {
                 path='/write'
                 element={<BlogInputForm userObj={userObj} />}
               ></Route>
-              <Route
-                path='/write'
-                element={<BlogInputForm userObj={userObj} />}
-              ></Route>
+              <Route path='/update/:id' element={<UpdateBlog />}></Route>
               <Route
                 path='/profile'
                 element={<UserProfile userObj={userObj} />}

@@ -52,3 +52,32 @@ h3 {
 u {
   text-transform: uppercase;
 }
+
+form > input[type='text'] {
+  text-align: left;
+  color: cyan;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  width: 80%;
+}
+
+form > button {
+  margin: 0 auto;
+}
+
+.form__container {
+  background-color: var(--background-blue);
+}
+
+h4 {
+  text-align: center;
+  margin: 1em auto;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
