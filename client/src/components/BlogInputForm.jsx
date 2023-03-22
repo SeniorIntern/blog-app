@@ -7,7 +7,7 @@ export default function BlogInputForm({ userObj }) {
   useEffect(() => {
     if (!localStorage.getItem('token')) window.location = '/';
   }, []);
-  
+
   const apiEndpoint = apiUrl + `blogs/`;
   const apiCategoriesEndpoint = apiUrl + `categories/`;
 
@@ -59,7 +59,7 @@ export default function BlogInputForm({ userObj }) {
   };
 
   return (
-    <div className='BlogInputForm'>
+    <div className='InputForm'>
       <form
         className='form'
         action='apiEndpoint'
@@ -85,7 +85,6 @@ export default function BlogInputForm({ userObj }) {
         </select>
         <textarea
           type='text'
-          className='blog__paragraph'
           rows='10'
           value={description}
           placeholder='Blog Paragraph...'

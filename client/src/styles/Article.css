@@ -36,7 +36,7 @@
 }
 
 .content__description > h2 {
-  color: cyan;
+  color: var(--text-blue);
 }
 
 .content__description > p {

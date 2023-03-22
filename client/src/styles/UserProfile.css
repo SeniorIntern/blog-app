@@ -9,7 +9,7 @@ details {
 
   text-transform: uppercase;
   border: 1px solid white;
-  color: cyan;
+  color: var(--text-blue);
 }
 
 summary {

@@ -10,7 +10,7 @@
 
 .center > input[type='text'] {
   text-align: left;
-  color: cyan;
+  color: var(--text-blue);
 }
 
 .left,
@@ -36,7 +36,7 @@
 }
 
 input[type='text'] {
-  color: cyan;
+  color: var(--text-blue);
   font-weight: bold;
   text-align: left;
   width: 100%;

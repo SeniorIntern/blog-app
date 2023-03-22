@@ -1,4 +1,4 @@
-.BlogInputForm {
+.InputForm {
   border: 1px solid #6b788c;
   border-radius: 2em;
   display: flex;
@@ -15,15 +15,9 @@ input[type='text'] {
   margin-bottom: 1.2em;
   width: 100%;
   text-align: left;
-  color: cyan;
+  color: var(--text-blue);
   font-size: 1rem;
   font-weight: bold;
-}
-
-.blog__paragraph {
-  background: transparent;
-  color: cyan;
-  font-size: 1rem;
 }
 
 .blog__category {

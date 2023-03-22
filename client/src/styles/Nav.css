@@ -5,8 +5,23 @@
   border-radius: 1.2em;
 }
 
-li {
-  list-style: none;
+nav > h3 {
+  color: var(--text-blue);
+  text-decoration: 1px wavy white;
+  display: inline;
+}
+
+.challenges {
+  margin: 1.2em 0;
+}
+
+ul > li {
   font-weight: bold;
   font-size: 1.2rem;
+  list-style: none;
+}
+
+ul > p {
+  list-style: none;
+  color: var(--text-color-grey);
 }

@@ -1,12 +1,13 @@
 import React, { lazy, Suspense, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 import { useEffect } from 'react';
+import jwtDecode from 'jwt-decode';
 import Logout from './components/Logout';
 import OtherProfile from './components/OtherProfile';
 import NotFound from './components/NotFound';
 import UpdateBlog from './components/UpdateBlog';
 import './App.css';
+import Challenges from './components/Challenges';
 
 const Header = lazy(() => import('./components/Header'));
 const Aside = lazy(() => import('./components/Aside'));
@@ -58,6 +59,7 @@ export default function App() {
                 element={<UserProfile userObj={userObj} />}
               ></Route>
               <Route path='/user/:username' element={<OtherProfile />}></Route>
+              <Route path='/addChallenge' element={<Challenges />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </main>
