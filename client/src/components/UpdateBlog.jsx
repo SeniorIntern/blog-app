@@ -16,7 +16,7 @@ export default function UpdateBlog() {
   console.log(apiEndpoint);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [categoryName, setCategoryName] = useState('');
   const [categories, setCategories] = useState([]);
 
   const token = localStorage.getItem('token');
@@ -44,7 +44,7 @@ export default function UpdateBlog() {
         {
           title: title,
           description: description,
-          categoryId: categoryId,
+          categoryName: categoryName,
         },
         {
           headers: {
@@ -75,12 +75,12 @@ export default function UpdateBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <select
-          value={categoryId}
-          onChange={(e) => setCategoryId(e.target.value)}
+          value={categoryName}
+          onChange={(e) => setCategoryName(e.target.value)}
         >
           <option value=''>Select a Category</option>
           {categories.map((category) => (
-            <option key={category._id} value={category._id}>
+            <option key={category._id} value={category.categoryName}>
               {category.categoryName}
             </option>
           ))}

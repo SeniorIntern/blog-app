@@ -1,19 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const { Challenge } = require('../models/Challenge');
 const admin = require('../middleware/admin');
 const auth = require('../middleware/auth');
-const _ = require('lodash');
+const challengeController = require('../controllers/challenges');
+const express = require('express');
+const router = express.Router();
 
-router.get('/', async (req, res) => {
-  const challenges = await Challenge.find();
-  res.status(200).send(challenges);
-});
+router.get('/', challengeController.getChallenges);
 
-router.post('/', [auth, admin], async (req, res) => {
-  const challenge = new Challenge(_.pick(req.body, ['title', 'description']));
-  await challenge.save();
-  res.status(200).send(challenge);
-});
+router.post('/', [auth, admin], challengeController.postChallenge);
 
 module.exports = router;

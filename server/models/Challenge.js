@@ -7,7 +7,7 @@ const Challenge = mongoose.model(
       type: String,
       required: true,
       minlength: 3,
-      maxlength: 24,
+      maxlength: 32,
     },
     description: {
       type: String,

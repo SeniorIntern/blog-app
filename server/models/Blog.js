@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { categorySchema } = require('./Category');
 
 // post model.
 const BlogModel = mongoose.model(
@@ -12,7 +11,6 @@ const BlogModel = mongoose.model(
         minlength: 5,
         maxlegth: 52,
       },
-      // todo- embedd user schema, categories
       description: {
         type: String,
         required: true,
@@ -44,9 +42,11 @@ const BlogModel = mongoose.model(
           },
         }),
       },
-      category: {
-        type: categorySchema,
+      categoryName: {
+        type: String,
         required: true,
+        minlength: 3,
+        maxlegth: 22,
       },
     },
     { timestamps: true }

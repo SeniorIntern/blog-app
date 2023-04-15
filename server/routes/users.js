@@ -1,79 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { UserModel } = require('../models/User');
-const _ = require('lodash');
-const bcrypt = require('bcrypt');
+const userController = require('../controllers/users');
 
-router.get('/', async (req, res) => {
-  try {
-    const users = await UserModel.find().select('_id username email');
-    res.status(200).send(users);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+router.get('/', userController.getUsers);
 
-router.get('/:searchName', async (req, res) => {
-  try {
-    const user = await UserModel.find({
-      username: req.params.searchName,
-    }).select('-password');
-    if (!user) res.status(404).send('Invalid User Name');
+router.get('/:searchName', userController.getUser);
 
-    res.status(200).send(user);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+router.post('/', userController.postUser);
 
-router.post('/', async (req, res) => {
-  try {
-    let user = await UserModel.findOne({ email: req.body.email });
-    if (user) return res.status(400).send('User Already Registered.');
+router.put('/:id', userController.putUser);
 
-    user = new UserModel(
-      _.pick(req.body, ['username', 'userDesc', 'email', 'password'])
-    );
-
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(user.password, salt);
-    await user.save();
-
-    const token = await user.generateAuthToken();
-    res
-      .status(200)
-      .header('x-auth-token', token)
-      .header('access-control-expose-headers', 'x-auth-token')
-      .send(_.pick(user, ['_id', 'username', 'userDesc', 'email']));
-  } catch (err) {
-    res.status(400).send(err.message);
-  }
-});
-
-router.put('/:id', async (req, res) => {
-  try {
-    const user = await UserModel.findByIdAndUpdate(
-      { _id: req.params.id },
-      {
-        $set: _.pick(req.body, ['username', 'userDesc', 'email', 'password']),
-      },
-      { new: true }
-    );
-    if (!user) res.status(404).send('Invalid User Id');
-    res.status(200).send(user);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
-
-router.delete('/:id', async (req, res) => {
-  try {
-    const user = await UserModel.findByIdAndDelete(req.params.id);
-    if (!user) res.status(404).send('Invalid User Id');
-    res.status(200).send(user);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+router.delete('/:id', userController.deleteUser);
 
 module.exports = router;

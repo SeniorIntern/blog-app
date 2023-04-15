@@ -23,7 +23,7 @@ export default function Article({
   description,
   user,
   datePosted,
-  category,
+  categoryName,
   updatedAt,
 }) {
   const apiEndpoint = apiUrl + 'blogs';
@@ -95,7 +95,7 @@ export default function Article({
       </div>
       <div className='article__informations'>
         <div className='article__tags'>
-          <p>{category.categoryName}</p>
+          <p>{categoryName}</p>
         </div>
         <div className='article__likes'>
           <p>updated @</p>

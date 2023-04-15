@@ -12,6 +12,8 @@
   flex-direction: row;
   overflow-y: hidden;
   overflow-x: scroll;
+  overflow: scroll;
+  margin: auto;
 }
 
 .figure {
