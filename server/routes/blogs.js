@@ -4,7 +4,6 @@ const { BlogModel } = require('../models/Blog');
 const { CategoryModel } = require('../models/Category');
 const { UserModel } = require('../models/User');
 const _ = require('lodash');
-const admin = require('../middleware/admin');
 const auth = require('../middleware/auth');
 
 // blog to display on timeline/feed
