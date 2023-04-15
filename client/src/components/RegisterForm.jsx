@@ -86,12 +86,12 @@ export default function RegisterForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type='text'
+          type='password'
           name='password'
           placeholder='password'
           value={password}
           required={true}
-          minLength={3}
+          minLength={7}
           maxLength={32}
           onChange={(e) => setPassword(e.target.value)}
         />

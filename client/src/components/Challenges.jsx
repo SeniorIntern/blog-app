@@ -56,7 +56,7 @@ export default function Challenges() {
           value={title}
           required={true}
           minLength={3}
-          maxLength={32}
+          maxLength={30}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
@@ -66,7 +66,7 @@ export default function Challenges() {
           value={description}
           required={true}
           minLength={6}
-          maxLength={154}
+          maxLength={150}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
         <button className='btn' type='submit'>

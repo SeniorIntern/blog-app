@@ -1,13 +1,21 @@
-import React, { useEffect, useMemo } from 'react';
-import jwtDecode from 'jwt-decode';
-import axios from 'axios';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { apiUrl } from '../config.json';
-import dummyImg from '../assets/img/programming.avif';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import axios from 'axios';
+import jwtDecode from 'jwt-decode';
+
+import { apiUrl } from '../config.json';
+import dummyImg from '../assets/img/programming.avif';
 import '../styles/Article.css';
+
+function formatDate(date) {
+  const year = date.getFullYear().toString().slice(-2);
+  const month = date.toLocaleString('default', { month: 'long' });
+  const day = date.getDate().toString();
+  return `${year} ${month} ${day}`;
+}
 
 export default function Article({
   _id,
@@ -19,44 +27,28 @@ export default function Article({
   updatedAt,
 }) {
   const apiEndpoint = apiUrl + 'blogs';
-  let userTokenUnDecoded = '';
-  let userTokenDecode = { email: '0@gmail.com' };
+  const [userTokenDecoded, setUserTokenDecoded] = useState({ email: '' });
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      console.log(`Token from Local Storage: ${localStorage.getItem('token')}`);
-
-      userTokenUnDecoded = localStorage.getItem('token');
-      userTokenDecode = jwtDecode(userTokenUnDecoded);
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded = jwtDecode(token);
+      console.log(`decoded email in useEffect block:`, decoded.email);
+      setUserTokenDecoded(decoded);
     }
   }, []);
 
   const date = useMemo(() => new Date(datePosted), [datePosted]);
-  const year = useMemo(() => date.getFullYear().toString().slice(-2), [date]);
-  const month = useMemo(
-    () => date.toLocaleString('default', { month: 'long' }),
-    [date]
-  );
-  const day = useMemo(() => date.getDate().toString(), [date]);
-  const alphabeticalDate = `${year} ${month} ${day}`;
+  const alphabeticalDate = useMemo(() => formatDate(date), [date]);
 
   const updatedDate = useMemo(() => new Date(updatedAt), [updatedAt]);
-  const updatedYear = useMemo(
-    () => updatedDate.getFullYear().toString().slice(-2),
-    [updatedDate]
-  );
-  const updatedMonth = useMemo(
-    () => updatedDate.toLocaleString('default', { month: 'long' }),
-    [updatedDate]
-  );
-  const updatedDay = useMemo(() => date.getDate().toString(), [date]);
-  const modifiedDate = `${updatedYear} ${updatedMonth} ${updatedDay}`;
+  const modifiedDate = useMemo(() => formatDate(updatedDate), [updatedDate]);
 
   const deleteArticle = async (blogId) => {
     if (window.confirm(`Are you sure you want to delete?: ${blogId}`)) {
       try {
         await axios.delete(`${apiEndpoint}/${blogId}`, {
-          headers: { 'x-auth-token': userTokenUnDecoded },
+          headers: { 'x-auth-token': localStorage.getItem('token') },
         });
       } catch (error) {
         window.alert(error.message);
@@ -74,7 +66,8 @@ export default function Article({
           <time>{alphabeticalDate}</time>
         </div>
         {/* only render when user.email matches logged user's email*/}
-        {user.email === userTokenDecode.email ? (
+        {console.log('user token decoded object:', userTokenDecoded)}
+        {user.email === userTokenDecoded.email ? (
           <React.Fragment>
             <div className='author__action'>
               <p>

@@ -13,7 +13,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
 
   const handleSignIn = (e) => {
-    e.preventDefault(); // prevent default behaviour on form submission
+    e.preventDefault();
 
     axios
       .post(apiEndpoint, {
@@ -60,7 +60,7 @@ export default function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type='text'
+          type='password'
           name='password'
           placeholder='password'
           required={true}

@@ -9,7 +9,7 @@
   background-color: var(--background-blue);
 }
 
-input[type='text'] {
+.InputForm > input[type='text'] {
   border: 1px solid #6b788c;
   border-radius: 2em;
   margin-bottom: 1.2em;

@@ -11,7 +11,8 @@ nav > h3 {
   display: inline;
 }
 
-.challenges {
+.challenges,
+.challenge {
   margin: 1.2em 0;
 }
 

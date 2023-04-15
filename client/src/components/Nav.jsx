@@ -25,8 +25,10 @@ export default function Nav() {
       <div className='challenges'>
         {challenges.map((challenge) => {
           return (
-            <div key={challenge._id}>
-              <h1> {challenge.title} </h1>
+            <div key={challenge._id} className='challenge'>
+              <h1>
+                <u>{challenge.title}</u>
+              </h1>
               <p> {challenge.description} </p>
             </div>
           );

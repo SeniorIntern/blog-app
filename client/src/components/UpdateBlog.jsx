@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '../styles/BlogInputForm.css';
 import { apiUrl } from '../config.json';
-import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
 
 const apiCategoriesEndpoint = apiUrl + `categories/`;
