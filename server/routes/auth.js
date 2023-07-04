@@ -1,7 +1,7 @@
+const bcrypt = require('bcrypt');
+const { UserModel } = require('../models/User');
 const express = require('express');
 const router = express.Router();
-const { UserModel } = require('../models/User');
-const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res) => {
   const user = await UserModel.findOne({ email: req.body.email });

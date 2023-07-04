@@ -1,15 +1,16 @@
+const validateObjectId = require('../middleware/validateObject');
+const categoryController = require('../controllers/categories');
 const express = require('express');
 const router = express.Router();
-const categoryController = require('../controllers/categories');
 
 router.get('/', categoryController.getCategories);
 
-router.get('/:id', categoryController.getCategory);
+router.get('/:id', validateObjectId, categoryController.getCategory);
 
 router.post('/', categoryController.postCategory);
 
-router.put('/:id', categoryController.putCategory);
+router.put('/:id', validateObjectId, categoryController.putCategory);
 
-router.delete('/:id', categoryController.deleteCategory);
+router.delete('/:id', validateObjectId, categoryController.deleteCategory);
 
 module.exports = router;
