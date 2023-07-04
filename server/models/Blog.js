@@ -7,12 +7,14 @@ const BlogModel = mongoose.model(
     {
       title: {
         type: String,
+        trim: true,
         required: true,
         minlength: 5,
         maxlegth: 52,
       },
       description: {
         type: String,
+        trim: true,
         required: true,
         minlength: 20,
         maxlegth: 800,
@@ -30,12 +32,14 @@ const BlogModel = mongoose.model(
         type: mongoose.Schema({
           username: {
             type: String,
+            trim: true,
             required: true,
             minlength: 5,
             maxlegth: 22,
           },
           email: {
             type: String,
+            trim: true,
             required: true,
             minlength: 10,
             maxlegth: 154,
@@ -44,6 +48,7 @@ const BlogModel = mongoose.model(
       },
       categoryName: {
         type: String,
+        trim: true,
         required: true,
         minlength: 3,
         maxlegth: 22,

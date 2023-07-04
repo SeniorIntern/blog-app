@@ -5,6 +5,7 @@ require('dotenv').config();
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
+    trim: true,
     required: true,
     unique: true,
     minlength: 5,
@@ -12,12 +13,14 @@ const userSchema = new mongoose.Schema({
   },
   userDesc: {
     type: String,
+    trim: true,
     required: true,
     minlength: 10,
     maxlegth: 52,
   },
   email: {
     type: String,
+    trim: true,
     required: true,
     unique: true,
     minlength: 10,
@@ -25,6 +28,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
+    trim: true,
     required: true,
     minlength: 7,
     maxlegth: 1024,
