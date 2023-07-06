@@ -4,7 +4,7 @@ const { UserModel } = require('../models/User');
 const _ = require('lodash');
 
 exports.getBlogs = async (req, res) => {
-  const blogs = await BlogModel.find().sort('datePosted').select('-email');
+  const blogs = await BlogModel.find().sort('datePosted');
   res.status(200).send(blogs);
 };
 
