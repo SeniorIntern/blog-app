@@ -3,12 +3,12 @@
   display: flex;
   background-color: var(--background-blue);
   align-items: center;
-  height: 4.4em;
+  height: 10vh;
   padding: 0.4em 2em;
   justify-content: space-between;
 }
 
-.center > input[type='text'] {
+.center > input[type="text"] {
   text-align: left;
   color: var(--text-blue);
 }

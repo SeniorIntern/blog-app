@@ -1,5 +1,5 @@
 .section {
-  border-radius: 1em 1em 0 0;
+  border: 1px solid white;
   background-color: var(--background-blue);
   margin: 0 auto;
   margin-bottom: 1.2em;
@@ -10,25 +10,39 @@
 .users__list {
   display: flex;
   flex-direction: row;
-  overflow-y: hidden;
+  gap: 2em;
+  padding: 0.5em;
+  max-width: 100%;
   overflow-x: scroll;
-  overflow: scroll;
   margin: auto;
 }
 
 .figure {
   display: flex;
   flex-direction: row;
-  padding: 1em;
-  border-radius: 50%;
   max-width: 6em;
-  width: auto;
   height: auto;
 }
 
-.round__corners {
+.figure__container {
+  display: grid;
+  place-content: center;
+}
+
+.figure__caption {
+  display: block;
+  text-align: center;
+}
+
+.figure__content {
+  width: 4em;
   border-radius: 50%;
   margin: 0 0.4em;
+}
+
+.message__container {
+  display: grid;
+  place-items: center;
 }
 
 .guest__message {
